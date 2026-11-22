@@ -1,0 +1,248 @@
+{
+  "entities": {
+    "FarmerScheme": {
+      "title": "FarmerScheme",
+      "description": "Editable agricultural welfare scheme with structured eligibility rules, official source link, and last-verified timestamp.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Authenticated workspace owner UID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Official scheme name"
+        },
+        "shortName": {
+          "type": "string",
+          "description": "Short acronym or display label"
+        },
+        "department": {
+          "type": "string",
+          "description": "Administering government department or agency"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "INCOME_SUPPORT",
+            "EQUIPMENT_SUBSIDY",
+            "CROP_INSURANCE",
+            "SOLAR_IRRIGATION",
+            "CREDIT_LOAN",
+            "WOMEN_FARMER"
+          ],
+          "description": "Primary farmer benefit category"
+        },
+        "benefitSummary": {
+          "type": "string",
+          "description": "Plain-language summary of financial or equipment benefit"
+        },
+        "fundingSponsor": {
+          "type": "string",
+          "description": "B2G/CSR/KVK funding or verification sponsor label"
+        },
+        "eligibleStates": {
+          "type": "array",
+          "description": "List of eligible Indian states or ['ALL'] for pan-India schemes"
+        },
+        "maxLandAcres": {
+          "type": "number",
+          "description": "Maximum landholding threshold in acres (999.0 means no upper cap)"
+        },
+        "maxAnnualIncomeInr": {
+          "type": "integer",
+          "description": "Maximum annual family income in INR (99999999 means no upper cap)"
+        },
+        "targetGender": {
+          "type": "string",
+          "enum": ["ALL", "FEMALE", "MALE"],
+          "description": "Target beneficiary gender rule"
+        },
+        "requiredDocuments": {
+          "type": "array",
+          "description": "Checklist of required physical/portal documents (never collected in-app)"
+        },
+        "officialSourceUrl": {
+          "type": "string",
+          "description": "Official government portal URL (https://)"
+        },
+        "lastVerifiedDate": {
+          "type": "string",
+          "description": "Human-readable exact verification date (e.g. 21 Nov 2026)"
+        },
+        "verifiedByOrg": {
+          "type": "string",
+          "description": "Verifying KVK, CSR, or State Agriculture office"
+        },
+        "active": {
+          "type": "boolean",
+          "description": "Whether the scheme is currently open for matching"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp (FieldValue.serverTimestamp())"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp (FieldValue.serverTimestamp())"
+        }
+      },
+      "required": [
+        "userId",
+        "name",
+        "shortName",
+        "department",
+        "category",
+        "benefitSummary",
+        "fundingSponsor",
+        "eligibleStates",
+        "maxLandAcres",
+        "maxAnnualIncomeInr",
+        "targetGender",
+        "requiredDocuments",
+        "officialSourceUrl",
+        "lastVerifiedDate",
+        "verifiedByOrg",
+        "active",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "EligibilityCheckLog": {
+      "title": "EligibilityCheckLog",
+      "description": "Zero-PII anonymous eligibility check event used for B2B/B2G/KVK impact telemetry.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Authenticated workspace owner UID"
+        },
+        "stateRegion": {
+          "type": "string",
+          "description": "State or district level region (no personal PII)"
+        },
+        "inputMode": {
+          "type": "string",
+          "enum": ["PLAIN_LANGUAGE", "VOICE_DIALECT", "DEMO_PROFILE"],
+          "description": "How the farmer entered their query"
+        },
+        "matchedCount": {
+          "type": "integer",
+          "description": "Number of likely eligible schemes matched"
+        },
+        "checklistDownloaded": {
+          "type": "boolean",
+          "description": "Whether the farmer exported/downloaded a document checklist"
+        },
+        "partnerChannel": {
+          "type": "string",
+          "description": "Sponsoring outreach channel"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp (FieldValue.serverTimestamp())"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp (FieldValue.serverTimestamp())"
+        }
+      },
+      "required": [
+        "userId",
+        "stateRegion",
+        "inputMode",
+        "matchedCount",
+        "checklistDownloaded",
+        "partnerChannel",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "PartnerFunding": {
+      "title": "PartnerFunding",
+      "description": "B2B/B2G institutional sponsor keeping Haq 100% free for farmers.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Authenticated workspace owner UID"
+        },
+        "organizationName": {
+          "type": "string",
+          "description": "Name of State Agriculture Dept, CSR Fund, Seed/Fertilizer Co-op, or KVK"
+        },
+        "partnerType": {
+          "type": "string",
+          "enum": [
+            "STATE_AGRI_DEPT",
+            "CSR_FUND",
+            "SEED_FERTILIZER_COOP",
+            "KVK_CENTER"
+          ],
+          "description": "Institutional payer category"
+        },
+        "regionCovered": {
+          "type": "string",
+          "description": "Geographic coverage area"
+        },
+        "farmersSponsoredTarget": {
+          "type": "integer",
+          "description": "Number of farmers supported under this sponsorship"
+        },
+        "fundingContributionLabel": {
+          "type": "string",
+          "description": "Funding tier or contribution summary"
+        },
+        "active": {
+          "type": "boolean",
+          "description": "Whether sponsorship is active"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp (FieldValue.serverTimestamp())"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp (FieldValue.serverTimestamp())"
+        }
+      },
+      "required": [
+        "userId",
+        "organizationName",
+        "partnerType",
+        "regionCovered",
+        "farmersSponsoredTarget",
+        "fundingContributionLabel",
+        "active",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/schemes/{schemeId}": {
+      "schema": {
+        "$ref": "#/entities/FarmerScheme"
+      },
+      "description": "Editable scheme rules store managed via B2G/KVK Admin View and evaluated by the Farmer Benefits Finder."
+    },
+    "/users/{userId}/check_logs/{logId}": {
+      "schema": {
+        "$ref": "#/entities/EligibilityCheckLog"
+      },
+      "description": "Zero-PII impact metrics log tracking matches and document checklist exports."
+    },
+    "/users/{userId}/partner_funding/{partnerId}": {
+      "schema": {
+        "$ref": "#/entities/PartnerFunding"
+      },
+      "description": "B2B/B2G institutional sponsors funding free farmer access."
+    }
+  }
+}

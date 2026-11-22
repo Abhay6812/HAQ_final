@@ -1,0 +1,6 @@
+{
+  "name": "Haq",
+  "description": "Farmer Benefits Finder with plain-language regional input, transparent eligibility rules, document checklists, and a B2G/KVK editable scheme store.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

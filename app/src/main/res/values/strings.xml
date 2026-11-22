@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Haq</string>
+    <string name="tagline_claim_yours">Claim What\'s Yours</string>
+    <string name="subtitle_farmer_finder">Farmer Benefits Finder</string>
+    <string name="sign_in_google">Sign in with Google</string>
+    <string name="privacy_guardrail_title">Zero-PII Privacy Promise</string>
+    <string name="privacy_guardrail_body">Haq never asks for or stores Aadhaar numbers, land passbooks, or bank account details.</string>
+    <string name="likely_eligible_badge">Likely Eligible</string>
+    <string name="partial_eligible_badge">Partially Likely • Verify Locally</string>
+    <string name="legal_disclaimer">Eligibility shown is an estimate ("Likely Eligible") based on published rules, never guaranteed. Final approval rests with the official government department.</string>
+    <string name="download_checklist">Download Document Checklist</string>
+    <string name="open_official_source">Official Source</string>
+    <string name="explain_simply_ai">Explain Simply (AI)</string>
+    <string name="tab_finder">Find Benefits</string>
+    <string name="tab_admin">B2G Admin</string>
+    <string name="tab_funding">Who Pays?</string>
+</resources>
